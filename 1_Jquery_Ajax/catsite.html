@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn Ajax</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="gallery"></div>
+
+<script>
+    function getCat() {      $.ajax({
+        "url":"https://aws.random.cat/meow",
+        "type":"GET"
+    }).done(function (data) {
+        $("#gallery").append("<a><img src= "+data.file+"></a>")
+    })
+    }
+    var i;
+    for (i = 0; i < 10; i++) {getCat();}
+    $('body').on('click','img',function(){
+        $(this).hide();
+        getCat();
+    })
+</script>
+
+</body>
+</html>
